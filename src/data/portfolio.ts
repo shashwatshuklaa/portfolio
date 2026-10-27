@@ -2,8 +2,11 @@ export interface Project {
   id: string;
   title: string;
   description: string;
+  contribution?: string;
   tags: string[];
-  link: string;
+  link?: string;
+  liveUrl?: string;
+  featured?: boolean;
 }
 
 export interface AcademicHighlight {
@@ -12,6 +15,19 @@ export interface AcademicHighlight {
   degree: string;
   period: string;
   highlights: string[];
+}
+
+export interface SkillCategory {
+  name: string;
+  skills: string[];
+}
+
+export interface Achievement {
+  id: string;
+  title: string;
+  issuer: string;
+  date: string;
+  description?: string;
 }
 
 export interface ContactLink {
@@ -26,7 +42,9 @@ export interface PortfolioData {
     bio: string;
     details: string[];
   };
+  skills: SkillCategory[];
   academics: AcademicHighlight[];
+  achievements: Achievement[];
   projects: Project[];
   resume: {
     summary: string;
@@ -51,6 +69,32 @@ export const portfolioData: PortfolioData = {
       "[Current learning goal, club activity, or technical interest]",
     ],
   },
+  skills: [
+    {
+      name: "Programming Languages",
+      skills: [
+        "[Language 1, e.g. Python]",
+        "[Language 2, e.g. TypeScript]",
+        "[Language 3, e.g. SQL]",
+      ],
+    },
+    {
+      name: "Frameworks & Libraries",
+      skills: [
+        "[Framework 1, e.g. React]",
+        "[Framework 2, e.g. Next.js]",
+        "[Library 1, e.g. Tailwind CSS]",
+      ],
+    },
+    {
+      name: "Developer Tools & Platforms",
+      skills: [
+        "[Tool 1, e.g. Git / GitHub]",
+        "[Tool 2, e.g. VS Code]",
+        "[Platform 1, e.g. Linux / Terminal]",
+      ],
+    },
+  ],
   academics: [
     {
       id: "academic-1",
@@ -64,20 +108,42 @@ export const portfolioData: PortfolioData = {
       ],
     },
   ],
+  achievements: [
+    {
+      id: "achievement-1",
+      title: "[Certification or Award Title 1]",
+      issuer: "[Issuing Organization or Event, e.g. Coursera / Competition Name]",
+      date: "[Month, Year]",
+      description: "[Brief description of the certification, hackathon outcome, or award received.]",
+    },
+    {
+      id: "achievement-2",
+      title: "[Hackathon or Honor Title 2]",
+      issuer: "[Event Name / University / Organization]",
+      date: "[Year]",
+      description: "[Brief description of project submitted, award received, or recognition.]",
+    },
+  ],
   projects: [
     {
       id: "project-1",
       title: "[Project Title 1]",
       description: "[Description of what the project does, key technical challenges solved, and practical outcomes.]",
+      contribution: "[Your specific role or key contribution to this project, e.g. designed database schema and backend API]",
       tags: ["[Technology 1]", "[Technology 2]", "[Technology 3]"],
       link: "[Project Repository or Demo Link]",
+      liveUrl: "[Live Demo Link]",
+      featured: true,
     },
     {
       id: "project-2",
       title: "[Project Title 2]",
       description: "[Description of what the project does, key technical challenges solved, and practical outcomes.]",
+      contribution: "[Your specific role or key contribution to this project, e.g. built responsive UI components and state management]",
       tags: ["[Technology A]", "[Technology B]"],
       link: "[Project Repository or Demo Link]",
+      liveUrl: "[Live Demo Link]",
+      featured: true,
     },
   ],
   resume: {

@@ -4,8 +4,8 @@ interface FooterProps {
 
 export default function Footer({ name }: FooterProps) {
   return (
-    <footer className="w-full border-t-2 border-[#1c2754] bg-[#070d20] py-8 text-slate-400">
-      <div className="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs">
+    <footer className="w-full border-t-2 border-[#1c2754] bg-[#070d20] py-5 sm:py-6 text-slate-400">
+      <div className="max-w-6xl mx-auto px-3 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-xs">
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 bg-cyan-400 shadow-[0_0_6px_#22d3ee]" />
           <p>© 2026 {name}. All rights reserved.</p>

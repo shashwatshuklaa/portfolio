@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import PageLoader from "@/components/PageLoader";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -24,6 +25,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full flex flex-col bg-[#060b19] text-slate-200">
+        <noscript>
+          <style>{`.page-loader-overlay { display: none !important; }`}</style>
+        </noscript>
+        <PageLoader />
         {children}
       </body>
     </html>

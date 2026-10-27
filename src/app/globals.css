@@ -69,3 +69,97 @@ body {
   transform: translateY(4px);
   box-shadow: 0 0 0 0 #581c87;
 }
+
+/* ==========================================================================
+   Page Loader Pixel Coin Animation
+   - Stepped vertical Y-axis coin flip (8 steps per revolution)
+   - Cycles repeatedly between full face and thin edge, matching animation reference
+   ========================================================================== */
+@keyframes pixel-coin-flip {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+.pixel-coin-flip {
+  display: inline-flex;
+  animation: pixel-coin-flip 0.55s steps(8) infinite;
+  transform-style: preserve-3d;
+}
+
+/* ==========================================================================
+   Custom Pixel Mouse Pointers
+   - Active strictly on devices with fine pointers & hover support (desktop mouse/trackpad)
+   - Touch devices, phones, and tablets remain completely native
+   - Normal state: retro diagonal pixel pointing hand (from Screenshot 22-04-30)
+   - Hover state: retro vertical pixel pointing hand (from Screenshot 22-13-42)
+   - Preserves standard system cursors for text inputs, disabled elements, and resize handles
+   ========================================================================== */
+@media (hover: hover) and (pointer: fine) {
+  html,
+  body {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18' shape-rendering='crispEdges'%3E%3Cpath d='M1 0h3v1h1v1h1v1h1v1h2v-1h2v-1h2v1h2v2h1v3h-1v1h-1v1h-1v3h-1v1H9v-1H8v-2H7v-1H5v1H3v-1H2v-2h1v-1h1v-1h1v-1H4v-1H3v-1H2v-1H1v-1H0V1h1V0z' fill='%23000000'/%3E%3Cpath d='M1 1h2v1h1v1h1v1h1v1h1v1H6v1H5v1H4v-1H3v-1H2v-1H1V1zm5 3h4v-1h2v-1h2v2h1v2h1v3h-1v1h-1v1h-1v1h-3v1h-1v-1H7v-1H6V4zm-3 6h3v2H4v1H3v-3zm5 3h5v2H9v-1H8v-1z' fill='%23ffffff'/%3E%3Cpath d='M5 4h1v1h1v2H6V6H5V4zm4-1h1v3H9V3zm3 1h1v3h-1V4zm-8 4h1v2H4V8z' fill='%23000000'/%3E%3C/svg%3E") 1 0, auto;
+  }
+
+  /* Interactive clickable controls: links, buttons, interactive elements & their children */
+  a,
+  a *,
+  button,
+  button *,
+  [role="button"],
+  [role="button"] *,
+  summary,
+  summary *,
+  input[type="submit"],
+  input[type="button"],
+  input[type="reset"],
+  select,
+  .pixel-btn-yellow,
+  .pixel-btn-yellow *,
+  .pixel-btn-cyan,
+  .pixel-btn-cyan *,
+  .pixel-btn-purple,
+  .pixel-btn-purple *,
+  .cursor-pointer,
+  [onclick] {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18' shape-rendering='crispEdges'%3E%3Cpath d='M4 0h4v3h3v1h3v1h3v6h-1v1h-2v1h-1v3H4v-4H3v-1H2v-1H1v-1H0V6h2V5h1V4h1V0z' fill='%23000000'/%3E%3Cpath d='M5 1h2v5H5V1zm3 3h2v7H8V4zm3 1h2v6h-2V5zm3 1h2v5h-2V6zM1 7h3v3H1V7zm3-1h10v6H4V6zm1 6h8v3H5v-3z' fill='%23ffffff'/%3E%3Cpath d='M7 3h1v9H7V3zm3 1h1v7h-1V4zm3 1h1v6h-1V5zm-10 3h1v3H3V8zm5 3h8v1H8v-1z' fill='%23000000'/%3E%3C/svg%3E") 6 0, pointer !important;
+  }
+
+  /* Preserve standard native I-beam cursor strictly for editable text inputs */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="url"],
+  input[type="number"],
+  textarea,
+  [contenteditable="true"] {
+    cursor: text !important;
+  }
+
+  /* Preserve standard disabled cursor */
+  :disabled,
+  [aria-disabled="true"],
+  button:disabled,
+  input:disabled,
+  button:disabled *,
+  input:disabled * {
+    cursor: not-allowed !important;
+  }
+
+  /* Preserve standard resize handle cursors */
+  [data-resize="col"], .resize-col { cursor: col-resize !important; }
+  [data-resize="row"], .resize-row { cursor: row-resize !important; }
+}
+
+/* Reduced motion: displays the static coin without flipping during the brief load */
+@media (prefers-reduced-motion: reduce) {
+  .pixel-coin-flip {
+    animation: none !important;
+    transform: none !important;
+  }
+}
