@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #060b19;
+  --foreground: #e2e8f0;
 }
 
 @theme inline {
@@ -12,15 +12,60 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body {
+  background-color: #060b19;
+  color: #e2e8f0;
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Framed game panel style */
+.pixel-panel {
+  background-color: #0b1228;
+  border: 2px solid #1c2754;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* Chunky pixel buttons */
+.pixel-btn-yellow {
+  background-color: #facc15;
+  color: #0f172a;
+  border: 2px solid #fef08a;
+  box-shadow: 0 4px 0 0 #a16207;
+}
+.pixel-btn-yellow:hover {
+  background-color: #fde047;
+}
+.pixel-btn-yellow:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 0 #a16207;
+}
+
+.pixel-btn-cyan {
+  background-color: #06b6d4;
+  color: #02131e;
+  border: 2px solid #67e8f9;
+  box-shadow: 0 4px 0 0 #0e7490;
+}
+.pixel-btn-cyan:hover {
+  background-color: #22d3ee;
+}
+.pixel-btn-cyan:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 0 #0e7490;
+}
+
+.pixel-btn-purple {
+  background-color: #171c38;
+  color: #d8b4fe;
+  border: 2px solid #9333ea;
+  box-shadow: 0 4px 0 0 #581c87;
+}
+.pixel-btn-purple:hover {
+  background-color: #20274c;
+  color: #f3e8ff;
+}
+.pixel-btn-purple:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 0 #581c87;
 }
