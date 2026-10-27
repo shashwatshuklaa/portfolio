@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Student Portfolio
+
+A personal student portfolio website built with [Next.js](https://nextjs.org) (App Router), [React](https://react.dev), [TypeScript](https://www.typescriptlang.org), and [Tailwind CSS](https://tailwindcss.com).
+
+The portfolio is structured as a one-page site with anchor navigation, featuring reusable components and a centralized, typed data file for all personal content and placeholders.
+
+---
 
 ## Getting Started
 
-First, run the development server:
+To run the portfolio locally on your computer:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+1. Open your terminal in this folder (`/home/krishna/Coding/Projects/Portfolio`).
+2. Start the local Next.js development server:
+   ```bash
+   npm run dev
+   ```
+3. Open your web browser and navigate to:
+   ```
+   http://localhost:3000
+   ```
+4. To stop the server at any time, press `Ctrl + C` in your terminal.
+
+---
+
+## Beginner-Friendly File Map
+
+Here is how the project is organized:
+
+```
+Portfolio/
+├── src/
+│   ├── app/
+│   │   ├── favicon.ico          # Browser tab icon
+│   │   ├── globals.css          # Global Tailwind CSS imports & base styles
+│   │   ├── layout.tsx           # Root HTML layout and font definitions
+│   │   └── page.tsx             # Main portfolio page (assembles all sections)
+│   ├── components/              # Modular, reusable building blocks
+│   │   ├── About.tsx            # About Me section
+│   │   ├── AcademicHighlights.tsx # Education & academic highlights
+│   │   ├── Contact.tsx          # Contact details & links
+│   │   ├── Footer.tsx           # Page footer with back-to-top link
+│   │   ├── Introduction.tsx     # Hero/introductory header section
+│   │   ├── Navbar.tsx           # Top navigation bar with anchor links
+│   │   ├── ProjectCard.tsx      # Reusable card component for single projects
+│   │   ├── Projects.tsx         # Selected Projects grid section
+│   │   └── Resume.tsx           # Résumé overview and links
+│   └── data/
+│       └── portfolio.ts         # Centralized, typed placeholder content file
+├── public/                      # Static files (images, icons)
+├── AGENTS.md                    # Guidance notes for AI coding assistants
+├── eslint.config.mjs            # ESLint rules and lint configuration
+├── next.config.ts               # Next.js configuration settings
+├── package.json                 # Project dependencies and script commands
+├── package-lock.json            # Exact version lockfile for npm packages
+├── README.md                    # Project documentation and file map (this file)
+└── tsconfig.json                # TypeScript compiler configuration
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Customizing Your Content
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+All text, project details, academic items, and contact links are stored in one single file:
+👉 **`src/data/portfolio.ts`**
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Open `src/data/portfolio.ts` to replace the placeholders (such as `[Your Name]`, `[Project Title 1]`, `[your.email@example.com]`, etc.) with your own information. Whenever you save the file, Next.js will automatically update the page in your browser.
