@@ -164,9 +164,53 @@ input:disabled * {
   }
 }
 
-/* Reduced motion: displays the static coin without flipping during the brief load */
+/* ==========================================================================
+   Navbar Original Pixel Coin Stepped Flip & Jump Animation
+   - Triggered on mouse/trackpad hover directly on the coin icon
+   - Plays a brief, stepped vertical Y-axis flip with a small jump
+   - Returns to rest facing forward at starting position
+   - Respects prefers-reduced-motion
+   ========================================================================== */
+@keyframes navbar-coin-step-flip {
+  0% {
+    transform: translateY(0) rotateY(0deg);
+  }
+  50% {
+    transform: translateY(-4px) rotateY(180deg);
+  }
+  100% {
+    transform: translateY(0) rotateY(360deg);
+  }
+}
+
+.navbar-pixel-coin {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  transform-origin: center center;
+}
+
+/* Stable hit-box padding so small upward jump does not lose :hover hit testing */
+.navbar-pixel-coin::after {
+  content: "";
+  position: absolute;
+  inset: -4px -6px -6px -6px;
+}
+
+.navbar-pixel-coin:hover {
+  animation: navbar-coin-step-flip 0.5s steps(8) 1;
+}
+
+/* Reduced motion: displays static coin without motion */
 @media (prefers-reduced-motion: reduce) {
   .pixel-coin-flip {
+    animation: none !important;
+    transform: none !important;
+  }
+  .navbar-pixel-coin,
+  .navbar-pixel-coin:hover {
     animation: none !important;
     transform: none !important;
   }
