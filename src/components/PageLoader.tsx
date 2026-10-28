@@ -1,56 +1,114 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
+
+/**
+ * In-memory module flag to avoid replaying the intro during Next.js client-side
+ * in-site navigation (e.g. clicking between "/" and "/projects"), while ensuring
+ * it always plays on fresh page load and page reload.
+ */
+let introPlayedInSession = false;
+
+/**
+ * ============================================================================
+ * ENTRY / LOADING ANIMATION CONFIGURATION
+ * Pacing, durations, and timing values easy to find and adjust.
+ * Inspired by Codédex's retro pixel coin animation and deliberate pacing.
+ * ============================================================================
+ */
+export const LOADER_CONFIG = {
+  // Duration in milliseconds to display the intro before initiating transition
+  displayDurationMs: 1800,
+
+  // Duration in milliseconds for the smooth fade transition into the portfolio
+  fadeDurationMs: 350,
+
+  // Hard safety timeout in milliseconds to guarantee the user is never stuck
+  safetyTimeoutMs: 3500,
+
+  // Fast display duration if user has prefers-reduced-motion active
+  reducedMotionDurationMs: 250,
+};
 
 export default function PageLoader() {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(() => !introPlayedInSession);
   const [isExiting, setIsExiting] = useState(false);
 
+  const timersRef = useRef<NodeJS.Timeout[]>([]);
+  const isTerminatedRef = useRef(false);
+
+  const cleanupAndDismiss = useCallback(() => {
+    if (isTerminatedRef.current) return;
+    isTerminatedRef.current = true;
+
+    timersRef.current.forEach(clearTimeout);
+    timersRef.current = [];
+
+    // Trigger smooth fade transition into the page
+    setIsExiting(true);
+
+    const finishTimer = setTimeout(() => {
+      setIsVisible(false);
+      document.body.style.overflow = "";
+    }, LOADER_CONFIG.fadeDurationMs);
+
+    timersRef.current.push(finishTimer);
+  }, []);
+
   useEffect(() => {
-    // Show only on initial website open; skip on in-site navigation
-    try {
-      if (sessionStorage.getItem("portfolio_initial_loaded")) {
-        setIsVisible(false);
-        return;
-      }
-      sessionStorage.setItem("portfolio_initial_loaded", "true");
-    } catch {
-      // sessionStorage unavailable or restricted
+    // If it already played during this client-side session (in-site navigation), do nothing
+    if (introPlayedInSession) {
+      return;
     }
+
+    introPlayedInSession = true;
+
+    // Check prefers-reduced-motion
+    const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const duration = reducedMotionQuery.matches
+      ? LOADER_CONFIG.reducedMotionDurationMs
+      : LOADER_CONFIG.displayDurationMs;
 
     // Lock page scrolling while the overlay is visible
     const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
-    // Show for two seconds (2000ms), then exit cleanly with swift 75ms fade
+    // Play intro for duration, then smoothly exit
     const timer = setTimeout(() => {
-      setIsExiting(true);
-      setTimeout(() => {
-        setIsVisible(false);
-        document.body.style.overflow = originalOverflow;
-      }, 75);
-    }, 2000);
+      cleanupAndDismiss();
+    }, duration);
+    timersRef.current.push(timer);
 
-    // Hard safety cap (4s) so the overlay can never trap the user
+    // Hard safety timeout cap to guarantee the user is never trapped
     const safetyTimer = setTimeout(() => {
-      setIsVisible(false);
-      document.body.style.overflow = originalOverflow;
-    }, 4000);
+      cleanupAndDismiss();
+    }, LOADER_CONFIG.safetyTimeoutMs);
+    timersRef.current.push(safetyTimer);
+
+    // Keyboard skip listener (Escape key)
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        cleanupAndDismiss();
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
 
     return () => {
-      clearTimeout(timer);
-      clearTimeout(safetyTimer);
+      timersRef.current.forEach(clearTimeout);
+      window.removeEventListener("keydown", onKeyDown);
       document.body.style.overflow = originalOverflow;
     };
-  }, []);
+  }, [cleanupAndDismiss]);
 
   if (!isVisible) return null;
 
   return (
     <div
       role="status"
-      aria-label="Loading"
-      className={`page-loader-overlay fixed inset-0 z-[9999] w-full h-[100dvh] min-h-[100svh] bg-[#060b19] flex items-center justify-center select-none transition-opacity duration-75 ${
+      aria-live="polite"
+      aria-label="Loading portfolio"
+      onClick={cleanupAndDismiss}
+      className={`page-loader-overlay fixed inset-0 z-[9999] w-full h-[100dvh] min-h-[100svh] bg-[#060b19] flex items-center justify-center select-none cursor-pointer transition-opacity duration-350 ease-out ${
         isExiting ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
     >
@@ -61,7 +119,7 @@ export default function PageLoader() {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 28"
-          className="w-[26px] h-[30px]"
+          className="w-[28px] h-[32px] drop-shadow-[0_4px_16px_rgba(250,204,21,0.5)]"
           fill="none"
           aria-hidden="true"
           shapeRendering="crispEdges"
@@ -97,10 +155,7 @@ export default function PageLoader() {
             fill="#78350f"
           />
           {/* Center emblem slot highlight */}
-          <path
-            d="M11 11h2v6h-2v-6z"
-            fill="#fef08a"
-          />
+          <path d="M11 11h2v6h-2v-6z" fill="#fef08a" />
           {/* Inner core accent */}
           <rect x="11" y="13" width="2" height="2" fill="#facc15" />
         </svg>

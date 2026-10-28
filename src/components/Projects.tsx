@@ -17,7 +17,7 @@ export default function Projects({
         <span className="px-2 py-0.5 rounded bg-cyan-950/80 border border-cyan-500/50 text-cyan-300 font-bold">
           CH. 05
         </span>
-        <span className="text-purple-400">//</span>
+        <span className="text-purple-400">{"//"}</span>
         <span className="text-slate-400">
           {showViewAll ? "FEATURED ARTIFACTS" : "CRAFTED ARTIFACTS"}
         </span>
