@@ -86,7 +86,7 @@ body {
 
 .pixel-coin-flip {
   display: inline-flex;
-  animation: pixel-coin-flip 0.55s steps(8) infinite;
+  animation: pixel-coin-flip 0.5s steps(8) infinite;
   transform-style: preserve-3d;
 }
 

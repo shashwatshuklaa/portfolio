@@ -7,7 +7,7 @@ import { useEffect, useState, useCallback, useRef } from "react";
  * in-site navigation (e.g. clicking between "/" and "/projects"), while ensuring
  * it always plays on fresh page load and page reload.
  */
-let introPlayedInSession = false;
+let introCompleted = false;
 
 /**
  * ============================================================================
@@ -17,51 +17,44 @@ let introPlayedInSession = false;
  * ============================================================================
  */
 export const LOADER_CONFIG = {
-  // Duration in milliseconds to display the intro before initiating transition
-  displayDurationMs: 1800,
+  // Duration in milliseconds to display the intro before initiating automatic transition
+  displayDurationMs: 1500,
 
   // Duration in milliseconds for the smooth fade transition into the portfolio
-  fadeDurationMs: 350,
+  fadeDurationMs: 300,
 
-  // Hard safety timeout in milliseconds to guarantee the user is never stuck
-  safetyTimeoutMs: 3500,
+  // Hard safety timeout in milliseconds to guarantee the user is never trapped
+  safetyTimeoutMs: 500,
 
   // Fast display duration if user has prefers-reduced-motion active
-  reducedMotionDurationMs: 250,
+  reducedMotionDurationMs: 150,
 };
 
 export default function PageLoader() {
-  const [isVisible, setIsVisible] = useState(() => !introPlayedInSession);
+  const [isVisible, setIsVisible] = useState(() => !introCompleted);
   const [isExiting, setIsExiting] = useState(false);
 
-  const timersRef = useRef<NodeJS.Timeout[]>([]);
   const isTerminatedRef = useRef(false);
 
   const cleanupAndDismiss = useCallback(() => {
     if (isTerminatedRef.current) return;
     isTerminatedRef.current = true;
-
-    timersRef.current.forEach(clearTimeout);
-    timersRef.current = [];
+    introCompleted = true;
 
     // Trigger smooth fade transition into the page
     setIsExiting(true);
 
-    const finishTimer = setTimeout(() => {
+    setTimeout(() => {
       setIsVisible(false);
       document.body.style.overflow = "";
     }, LOADER_CONFIG.fadeDurationMs);
-
-    timersRef.current.push(finishTimer);
   }, []);
 
   useEffect(() => {
-    // If it already played during this client-side session (in-site navigation), do nothing
-    if (introPlayedInSession) {
+    // If intro has already completed in this session, do nothing
+    if (introCompleted) {
       return;
     }
-
-    introPlayedInSession = true;
 
     // Check prefers-reduced-motion
     const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -73,19 +66,17 @@ export default function PageLoader() {
     const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
-    // Play intro for duration, then smoothly exit
+    // Automatically transition to the main page when the intro duration finishes
     const timer = setTimeout(() => {
       cleanupAndDismiss();
     }, duration);
-    timersRef.current.push(timer);
 
     // Hard safety timeout cap to guarantee the user is never trapped
     const safetyTimer = setTimeout(() => {
       cleanupAndDismiss();
     }, LOADER_CONFIG.safetyTimeoutMs);
-    timersRef.current.push(safetyTimer);
 
-    // Keyboard skip listener (Escape key)
+    // Optional keyboard skip listener (Escape key) for accessibility
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         cleanupAndDismiss();
@@ -94,7 +85,8 @@ export default function PageLoader() {
     window.addEventListener("keydown", onKeyDown);
 
     return () => {
-      timersRef.current.forEach(clearTimeout);
+      clearTimeout(timer);
+      clearTimeout(safetyTimer);
       window.removeEventListener("keydown", onKeyDown);
       document.body.style.overflow = originalOverflow;
     };
@@ -108,7 +100,7 @@ export default function PageLoader() {
       aria-live="polite"
       aria-label="Loading portfolio"
       onClick={cleanupAndDismiss}
-      className={`page-loader-overlay fixed inset-0 z-[9999] w-full h-[100dvh] min-h-[100svh] bg-[#060b19] flex items-center justify-center select-none cursor-pointer transition-opacity duration-350 ease-out ${
+      className={`page-loader-overlay fixed inset-0 z-[9999] w-full h-[100dvh] min-h-[100svh] bg-[#060b19] flex items-center justify-center select-none cursor-pointer transition-opacity duration-300 ease-out ${
         isExiting ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
     >
