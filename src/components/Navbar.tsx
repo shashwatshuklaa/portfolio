@@ -6,17 +6,17 @@ interface NavbarProps {
 
 export default function Navbar({ name }: NavbarProps) {
   return (
-    <header className="sticky top-0 z-50 w-full border-b-2 border-[#1c2754] bg-[#070d20]/95 backdrop-blur shadow-[0_4px_16px_rgba(0,0,0,0.4)]">
-      <div className="max-w-6xl mx-auto px-3 sm:px-6 py-2 sm:py-2.5 flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-4">
+    <header className="sticky top-0 z-50 w-full border-b border-[#152044] bg-[#060b19]/90 backdrop-blur-md shadow-[0_2px_12px_rgba(0,0,0,0.3)]">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between gap-2 sm:gap-6">
         <Link
           href="/#intro"
-          className="flex items-center gap-2 text-white font-mono font-bold tracking-tight text-xs sm:text-base hover:text-cyan-300 focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:outline-none px-1.5 py-0.5 rounded transition-colors"
+          className="flex items-center gap-1.5 sm:gap-2.5 text-white font-mono font-bold tracking-tight text-xs sm:text-base hover:text-cyan-300 focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:outline-none rounded transition-colors shrink-0"
         >
           <span className="navbar-pixel-coin shrink-0 flex items-center justify-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 28"
-              className="w-3.5 h-4 drop-shadow-[0_0_6px_rgba(250,204,21,0.5)]"
+              className="w-[18px] h-[21px] sm:w-5 sm:h-[23px] drop-shadow-[0_0_8px_rgba(250,204,21,0.5)]"
               fill="none"
               aria-hidden="true"
               shapeRendering="crispEdges"
@@ -49,25 +49,25 @@ export default function Navbar({ name }: NavbarProps) {
               <rect x="11" y="13" width="2" height="2" fill="#facc15" />
             </svg>
           </span>
-          <span className="truncate">{name}</span>
-          <span className="text-[10px] font-mono font-bold uppercase tracking-widest px-1.5 py-0.5 rounded bg-purple-950/80 border border-purple-500/50 text-purple-300 shrink-0">
+          <span className="truncate max-w-[85px] min-[400px]:max-w-none">{name}</span>
+          <span className="hidden sm:inline-block text-[9px] sm:text-[10px] font-mono font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-purple-950/70 border border-purple-500/40 text-purple-300 shrink-0">
             LVL 1
           </span>
         </Link>
 
         <nav
           aria-label="Portfolio sections"
-          className="flex flex-wrap items-center justify-center gap-1 sm:gap-3 text-xs sm:text-sm font-mono text-slate-300"
+          className="flex items-center gap-1 min-[340px]:gap-1.5 min-[380px]:gap-2.5 sm:gap-6 md:gap-7 text-[11px] min-[360px]:text-xs sm:text-sm font-sans font-medium text-slate-300 shrink-0"
         >
           <Link
             href="/#about"
-            className="px-2 py-1 rounded hover:text-cyan-300 hover:bg-[#121c3d] focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:outline-none transition-colors"
+            className="hover:text-cyan-300 focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:outline-none transition-colors py-1 px-0.5 sm:px-0"
           >
             About
           </Link>
           <Link
             href="/projects"
-            className="px-2 py-1 rounded hover:text-cyan-300 hover:bg-[#121c3d] focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:outline-none transition-colors"
+            className="hover:text-cyan-300 focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:outline-none transition-colors py-1 px-0.5 sm:px-0"
           >
             Projects
           </Link>
@@ -75,13 +75,13 @@ export default function Navbar({ name }: NavbarProps) {
             href="https://drive.google.com/file/d/1SDDgg6uat46IIMbqCsiX-njzrmR7nyiq/view?usp=drive_link"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-2 py-1 rounded hover:text-cyan-300 hover:bg-[#121c3d] focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:outline-none transition-colors"
+            className="hover:text-cyan-300 focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:outline-none transition-colors py-1 px-0.5 sm:px-0"
           >
             Résumé
           </a>
           <Link
             href="/#contact"
-            className="px-2 py-1 rounded text-yellow-300 hover:text-yellow-200 hover:bg-[#121c3d] focus-visible:ring-2 focus-visible:ring-yellow-300 focus-visible:outline-none transition-colors"
+            className="text-yellow-300 hover:text-yellow-200 focus-visible:ring-2 focus-visible:ring-yellow-300 focus-visible:outline-none transition-colors py-1 px-0.5 sm:px-0 font-semibold"
           >
             Contact
           </Link>

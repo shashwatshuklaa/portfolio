@@ -59,104 +59,156 @@ export interface PortfolioData {
 }
 
 export const portfolioData: PortfolioData = {
-  name: "[Your Name]",
-  headline: "[Your Field of Study / Aspiring Role, e.g. Computer Science Student]",
+  name: "Shashwat Shukla",
+  headline:
+    "B.Tech Information Technology student at Galgotias College of Engineering and Technology. Interested in full-stack development and Python-based AI systems. Based in Noida, India.",
   about: {
-    bio: "[Write a concise summary introducing yourself, what you are studying, and your areas of interest.]",
+    bio: "B.Tech Information Technology student at Galgotias College of Engineering and Technology based in Noida, India. Interested in full-stack development and Python-based AI systems.",
     details: [
-      "[Academic focus or key interest, e.g., Systems Programming, Databases, Web Engineering]",
-      "[Primary technologies or languages, e.g., TypeScript, Python, SQL, C++]",
-      "[Current learning goal, club activity, or technical interest]",
+      "Education: Bachelor of Technology in Information Technology, Galgotias College of Engineering and Technology, Greater Noida (2023–2027)",
+      "Technical Focus: Full-stack web development and Python-based AI systems",
+      "Core Foundations: Object-Oriented Programming (OOP), Database Management Systems (DBMS), Operating Systems, Computer Networks",
     ],
   },
   skills: [
     {
       name: "Programming Languages",
-      skills: [
-        "[Language 1, e.g. Python]",
-        "[Language 2, e.g. TypeScript]",
-        "[Language 3, e.g. SQL]",
-      ],
+      skills: ["C", "C++", "Python", "Java", "JavaScript"],
     },
     {
       name: "Frameworks & Libraries",
       skills: [
-        "[Framework 1, e.g. React]",
-        "[Framework 2, e.g. Next.js]",
-        "[Library 1, e.g. Tailwind CSS]",
+        "React",
+        "Next.js",
+        "Node.js",
+        "Express",
+        "Tailwind CSS",
+        "Streamlit",
+      ],
+    },
+    {
+      name: "AI & Machine Learning",
+      skills: [
+        "OpenAI API",
+        "Whisper",
+        "Mistral AI",
+        "LangChain",
+        "ChromaDB",
+        "RAG",
+        "Multi-Agent Systems",
+        "Hugging Face Embeddings",
+      ],
+    },
+    {
+      name: "Web & Backend",
+      skills: [
+        "REST APIs",
+        "WebSockets",
+        "JWT",
+        "Payment Gateway Integration",
+        "Razorpay",
+      ],
+    },
+    {
+      name: "Databases & Core Concepts",
+      skills: [
+        "MongoDB",
+        "MySQL",
+        "OOP",
+        "DBMS",
+        "Operating Systems",
+        "Computer Networks",
       ],
     },
     {
       name: "Developer Tools & Platforms",
-      skills: [
-        "[Tool 1, e.g. Git / GitHub]",
-        "[Tool 2, e.g. VS Code]",
-        "[Platform 1, e.g. Linux / Terminal]",
-      ],
+      skills: ["Git", "GitHub", "VS Code", "Linux", "Postman"],
     },
   ],
   academics: [
     {
       id: "academic-1",
-      institution: "[University / College Name]",
-      degree: "[Degree / Major, e.g., B.S. in Computer Science]",
-      period: "[Start Year] - [Expected Graduation Year]",
+      institution:
+        "Galgotias College of Engineering and Technology, Greater Noida, India",
+      degree: "Bachelor of Technology in Information Technology",
+      period: "2023 – 2027",
       highlights: [
-        "[Relevant Coursework: Data Structures, Algorithms, Database Management Systems]",
-        "[Academic Honor / Scholarship / Dean's List placeholder]",
-        "[Academic club or lab activity placeholder]",
+        "Core Coursework: Object-Oriented Programming (OOP), Database Management Systems (DBMS), Operating Systems, Computer Networks",
+        "Technical Focus: Full-stack web architecture and Python-based AI systems",
       ],
     },
   ],
   achievements: [
     {
       id: "achievement-1",
-      title: "[Certification or Award Title 1]",
-      issuer: "[Issuing Organization or Event, e.g. Coursera / Competition Name]",
-      date: "[Month, Year]",
-      description: "[Brief description of the certification, hackathon outcome, or award received.]",
+      title: "Frontend Developer (React)",
+      issuer: "HackerRank",
+      date: "September 2026",
+      description: "Credential ID: 170AFF7754EA",
     },
     {
       id: "achievement-2",
-      title: "[Hackathon or Honor Title 2]",
-      issuer: "[Event Name / University / Organization]",
-      date: "[Year]",
-      description: "[Brief description of project submitted, award received, or recognition.]",
+      title: "Intro to Machine Learning",
+      issuer: "Kaggle",
+      date: "September 2026",
+      description: "Foundational machine learning concepts, models, and workflows.",
     },
   ],
   projects: [
     {
       id: "project-1",
-      title: "[Project Title 1]",
-      description: "[Description of what the project does, key technical challenges solved, and practical outcomes.]",
-      contribution: "[Your specific role or key contribution to this project, e.g. designed database schema and backend API]",
-      tags: ["[Technology 1]", "[Technology 2]", "[Technology 3]"],
-      link: "[Project Repository or Demo Link]",
-      liveUrl: "[Live Demo Link]",
+      title: "QR Based Ticketing System",
+      description:
+        "Built a QR-based event ticketing system for more than 5,000 attendees within a 36-hour delivery cycle. Integrated Razorpay payments, unique QR code generation, and email delivery of tickets. Built an admin QR scanner using the device camera, including offline scanning, synchronization, and conflict resolution. Implemented OTP-based two-factor admin login and multi-event management with admin-to-event assignment.",
+      contribution:
+        "Designed REST APIs and real-time analytics using WebSockets; the résumé reports check-in was 30% faster.",
+      tags: [
+        "React",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "Next.js",
+        "Razorpay",
+        "WebSockets",
+      ],
       featured: true,
     },
     {
       id: "project-2",
-      title: "[Project Title 2]",
-      description: "[Description of what the project does, key technical challenges solved, and practical outcomes.]",
-      contribution: "[Your specific role or key contribution to this project, e.g. built responsive UI components and state management]",
-      tags: ["[Technology A]", "[Technology B]"],
-      link: "[Project Repository or Demo Link]",
-      liveUrl: "[Live Demo Link]",
+      title: "E-commerce Platform with Secure Payments",
+      description:
+        "Developed a full-stack e-commerce platform; the résumé reports it processes more than 6,000 transactions monthly.",
+      contribution:
+        "Optimized the checkout pipeline; the résumé reports 40% faster payment completion using JWT-secured APIs.",
+      tags: [
+        "React",
+        "Next.js",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "Razorpay",
+        "JWT",
+      ],
       featured: true,
     },
   ],
   resume: {
-    summary: "[Brief note highlighting your qualifications, technical skill set, and internship availability.]",
-    viewUrl: "[Résumé View Link]",
-    downloadUrl: "[Résumé Download Link]",
+    summary:
+      "B.Tech Information Technology student at Galgotias College of Engineering and Technology (2023–2027). Hands-on experience developing full-stack web platforms and Python-based AI systems.",
+    viewUrl:
+      "https://drive.google.com/file/d/1SDDgg6uat46IIMbqCsiX-njzrmR7nyiq/view?usp=drive_link",
+    downloadUrl:
+      "https://drive.google.com/file/d/1SDDgg6uat46IIMbqCsiX-njzrmR7nyiq/view?usp=drive_link",
   },
   contact: {
-    email: "[your.email@example.com]",
-    message: "[Feel free to reach out for internship inquiries, collaborative projects, or academic discussions.]",
+    email: "krishnashukla140204@gmail.com",
+    message:
+      "Based in Noida, India. Open to full-stack engineering and Python AI systems opportunities. Feel free to connect via email or phone (+91-6393172713).",
     links: [
-      { label: "GitHub", url: "[GitHub Profile Link]" },
-      { label: "LinkedIn", url: "[LinkedIn Profile Link]" },
+      {
+        label: "GitHub",
+        url: "https://github.com/shashwatshuklaa",
+      },
     ],
   },
 };
