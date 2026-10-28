@@ -66,9 +66,11 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               {hasRealRepoLink ? (
                 <a
                   href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="font-bold text-cyan-400 hover:text-cyan-300 underline underline-offset-4 focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:outline-none rounded transition-colors text-[11px]"
                 >
-                  Code: {project.link}
+                  GitHub repository
                 </a>
               ) : (
                 <span className="text-slate-500 text-[11px]">
@@ -83,9 +85,11 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               {hasRealLiveLink ? (
                 <a
                   href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="font-bold text-yellow-300 hover:text-yellow-200 underline underline-offset-4 focus-visible:ring-2 focus-visible:ring-yellow-300 focus-visible:outline-none rounded transition-colors text-[11px]"
                 >
-                  Live Demo: {project.liveUrl}
+                  Live Demo
                 </a>
               ) : (
                 <span className="text-slate-500 text-[11px]">

@@ -171,6 +171,7 @@ export const portfolioData: PortfolioData = {
         "Razorpay",
         "WebSockets",
       ],
+      link: "https://github.com/shashwatshuklaa/QR-Based-Ticketing-System",
       featured: true,
     },
     {
