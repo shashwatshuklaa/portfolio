@@ -20,7 +20,18 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       <div className="space-y-2">
         <div className="flex items-center justify-between gap-2 border-b border-[#141f42] pb-1.5">
           <h3 className="text-sm sm:text-base font-bold font-mono text-white">
-            {project.title}
+            {hasRealLiveLink ? (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-yellow-300 underline-offset-4 hover:underline focus-visible:ring-2 focus-visible:ring-yellow-300 focus-visible:outline-none rounded transition-colors"
+              >
+                {project.title}
+              </a>
+            ) : (
+              project.title
+            )}
           </h3>
           <span className="text-[9px] font-mono font-bold text-cyan-400 uppercase tracking-widest px-1.5 py-0.5 rounded bg-cyan-950/60 border border-cyan-500/30">
             ITEM

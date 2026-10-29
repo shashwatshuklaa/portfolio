@@ -172,6 +172,7 @@ export const portfolioData: PortfolioData = {
         "WebSockets",
       ],
       link: "https://github.com/shashwatshuklaa/QR-Based-Ticketing-System",
+      liveUrl: "https://qr-based-ticketing-system-di2m.vercel.app/",
       featured: true,
     },
     {
