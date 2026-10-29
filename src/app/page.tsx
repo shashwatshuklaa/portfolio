@@ -29,9 +29,9 @@ export default function Home() {
         <div className="relative border-l-2 border-[#1a2550] ml-1.5 sm:ml-3 pl-3.5 sm:pl-7 space-y-5 sm:space-y-7">
           <About about={portfolioData.about} />
           <Skills skills={portfolioData.skills} />
+          <Projects projects={featuredProjects} showViewAll={true} />
           <AcademicHighlights academics={portfolioData.academics} />
           <Achievements achievements={portfolioData.achievements} />
-          <Projects projects={featuredProjects} showViewAll={true} />
           <Resume resume={portfolioData.resume} />
           <Contact contact={portfolioData.contact} />
         </div>

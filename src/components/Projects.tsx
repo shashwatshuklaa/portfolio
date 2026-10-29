@@ -15,7 +15,7 @@ export default function Projects({
     <section id="projects" className="scroll-mt-20">
       <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-cyan-400 mb-2">
         <span className="px-2 py-0.5 rounded bg-cyan-950/80 border border-cyan-500/50 text-cyan-300 font-bold">
-          CH. 05
+          CH. 03
         </span>
         <span className="text-purple-400">{"//"}</span>
         <span className="text-slate-400">
