@@ -78,7 +78,7 @@ export default function Introduction({ name, headline }: IntroductionProps) {
         </div>
 
         {/* Hero Content Section */}
-        <div className="p-4 sm:p-5 bg-[#081028] flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+        <div className="p-4 sm:p-5 bg-[#081028] flex flex-col sm:flex-row-reverse sm:items-center gap-4 sm:gap-6">
           {/* Framed Portrait */}
           <div className="w-fit shrink-0 rounded-lg border-2 border-[#1c2754] bg-[#070e22] p-1.5 shadow-[0_6px_18px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(34,211,238,0.12)]">
             <div className="relative w-32 h-36 sm:w-36 sm:h-44 overflow-hidden rounded border border-cyan-500/40 bg-[#060b19]">
