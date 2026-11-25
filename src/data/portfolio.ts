@@ -198,9 +198,9 @@ export const portfolioData: PortfolioData = {
     summary:
       "B.Tech Information Technology student at Galgotias College of Engineering and Technology (2023–2027). Hands-on experience developing full-stack web platforms and Python-based AI systems.",
     viewUrl:
-      "https://drive.google.com/file/d/1SDDgg6uat46IIMbqCsiX-njzrmR7nyiq/view?usp=drive_link",
+      "https://drive.google.com/file/d/1iP0dkDklTPWvJYnVvXwSl5gPUKxY7Uuo/view?usp=sharing",
     downloadUrl:
-      "https://drive.google.com/file/d/1SDDgg6uat46IIMbqCsiX-njzrmR7nyiq/view?usp=drive_link",
+      "https://drive.google.com/file/d/1iP0dkDklTPWvJYnVvXwSl5gPUKxY7Uuo/view?usp=sharing",
   },
   contact: {
     email: "krishnashukla140204@gmail.com",

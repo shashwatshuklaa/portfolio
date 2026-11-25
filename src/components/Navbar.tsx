@@ -78,7 +78,7 @@ export default function Navbar({ name }: NavbarProps) {
             Projects
           </Link>
           <a
-            href="https://drive.google.com/file/d/1SDDgg6uat46IIMbqCsiX-njzrmR7nyiq/view?usp=drive_link"
+            href="https://drive.google.com/file/d/1iP0dkDklTPWvJYnVvXwSl5gPUKxY7Uuo/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-cyan-300 focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:outline-none transition-colors py-1 px-1 sm:px-0"
