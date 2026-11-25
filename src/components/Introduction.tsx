@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 interface IntroductionProps {
   name: string;
   headline: string;
@@ -76,39 +78,55 @@ export default function Introduction({ name, headline }: IntroductionProps) {
         </div>
 
         {/* Hero Content Section */}
-        <div className="p-4 sm:p-5 space-y-3 bg-[#081028]">
-          <div className="flex flex-wrap items-center gap-2 text-xs font-mono">
-            <span className="px-2 py-0.5 rounded bg-yellow-400/10 border border-yellow-400/40 text-yellow-300 font-bold uppercase tracking-wider text-[11px]">
-              ✦ PLAYER ONE
-            </span>
-            <span className="text-purple-400">•</span>
-            <span className="text-slate-400 uppercase tracking-widest text-[11px]">
-              MISSION BRIEF
-            </span>
+        <div className="p-4 sm:p-5 bg-[#081028] flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+          {/* Framed Portrait */}
+          <div className="w-fit shrink-0 rounded-lg border-2 border-[#1c2754] bg-[#070e22] p-1.5 shadow-[0_6px_18px_rgba(0,0,0,0.45),inset_0_1px_0_rgba(34,211,238,0.12)]">
+            <div className="relative w-32 h-36 sm:w-36 sm:h-44 overflow-hidden rounded border border-cyan-500/40 bg-[#060b19]">
+              <Image
+                src="/Photo.jpeg"
+                alt={`Portrait of ${name}`}
+                fill
+                sizes="(max-width: 639px) 128px, 144px"
+                className="object-cover object-top"
+                loading="eager"
+              />
+            </div>
           </div>
 
-          <h1 className="text-2xl sm:text-4xl font-black font-mono text-white tracking-tight">
-            {name}
-          </h1>
+          <div className="min-w-0 flex-1 space-y-3">
+            <div className="flex flex-wrap items-center gap-2 text-xs font-mono">
+              <span className="px-2 py-0.5 rounded bg-yellow-400/10 border border-yellow-400/40 text-yellow-300 font-bold uppercase tracking-wider text-[11px]">
+                ✦ PLAYER ONE
+              </span>
+              <span className="text-purple-400">•</span>
+              <span className="text-slate-400 uppercase tracking-widest text-[11px]">
+                MISSION BRIEF
+              </span>
+            </div>
 
-          <p className="text-sm sm:text-base text-slate-300 max-w-3xl leading-relaxed">
-            {headline}
-          </p>
+            <h1 className="text-2xl sm:text-4xl font-black font-mono text-white tracking-tight">
+              {name}
+            </h1>
 
-          {/* Chunky Pixel CTAs */}
-          <div className="pt-1 flex flex-wrap gap-3">
-            <a
-              href="#projects"
-              className="pixel-btn-yellow inline-flex items-center justify-center px-4 py-2 font-mono font-bold text-xs sm:text-sm uppercase tracking-wider rounded focus-visible:ring-2 focus-visible:ring-yellow-300 focus-visible:outline-none transition-all"
-            >
-              View Projects ⚔
-            </a>
-            <a
-              href="#contact"
-              className="pixel-btn-cyan inline-flex items-center justify-center px-4 py-2 font-mono font-bold text-xs sm:text-sm uppercase tracking-wider rounded focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:outline-none transition-all"
-            >
-              Get in Touch ✉
-            </a>
+            <p className="text-sm sm:text-base text-slate-300 max-w-3xl leading-relaxed">
+              {headline}
+            </p>
+
+            {/* Chunky Pixel CTAs */}
+            <div className="pt-1 flex flex-wrap gap-3">
+              <a
+                href="#projects"
+                className="pixel-btn-yellow inline-flex items-center justify-center px-4 py-2 font-mono font-bold text-xs sm:text-sm uppercase tracking-wider rounded focus-visible:ring-2 focus-visible:ring-yellow-300 focus-visible:outline-none transition-all"
+              >
+                View Projects ⚔
+              </a>
+              <a
+                href="#contact"
+                className="pixel-btn-cyan inline-flex items-center justify-center px-4 py-2 font-mono font-bold text-xs sm:text-sm uppercase tracking-wider rounded focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:outline-none transition-all"
+              >
+                Get in Touch ✉
+              </a>
+            </div>
           </div>
         </div>
       </div>
